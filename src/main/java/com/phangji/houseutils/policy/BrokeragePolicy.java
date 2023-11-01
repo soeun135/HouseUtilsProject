@@ -1,5 +1,6 @@
 package com.phangji.houseutils.policy;
 
+
 public interface BrokeragePolicy {
 
     BrokerageRule createdBrokerageRule(Long price);
