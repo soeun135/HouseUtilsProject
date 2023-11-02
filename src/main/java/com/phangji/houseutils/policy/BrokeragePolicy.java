@@ -1,12 +1,17 @@
 package com.phangji.houseutils.policy;
 
 
-public interface BrokeragePolicy {
+import com.phangji.houseutils.exception.ErrorCode;
+import com.phangji.houseutils.exception.HouseUtilsException;
 
-    BrokerageRule createdBrokerageRule(Long price);
+import java.util.List;
+
+public interface BrokeragePolicy {
+    List<BrokerageRule> getRules();
     default Long calculate(Long price) {
-        //가격을 받아서 중개수수료 계산
-        BrokerageRule rule = createdBrokerageRule(price);
-        return rule.calcMaxBrokerage(price);
+        BrokerageRule brokerageRule = getRules().stream()
+                .filter(rule -> price < rule.getLessThan())
+                .findFirst().orElseThrow(() -> new HouseUtilsException(ErrorCode.INTERNAL_ERROR));
+        return brokerageRule.calcMaxBrokerage(price);
     }
 }

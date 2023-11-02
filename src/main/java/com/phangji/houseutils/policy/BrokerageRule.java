@@ -1,6 +1,7 @@
 package com.phangji.houseutils.policy;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.lang.Nullable;
 
 /**
@@ -8,18 +9,18 @@ import org.springframework.lang.Nullable;
  */
 
 @AllArgsConstructor
+@Getter
 public class BrokerageRule {
+    private Long lessThan;
     private Double brokeragePercent;
-
-    @Nullable
     private Long limitAmount;
 
+    public BrokerageRule(Long lessThan, Double brokeragePercent) {
+        this(lessThan, brokeragePercent, Long.MAX_VALUE);
+    }
+
     public Long calcMaxBrokerage(Long price) {
-        Long calPrice = multiplePercent(price);
-        if (limitAmount == null) {
-            return calPrice;
-        }
-        return Math.min(calPrice, limitAmount);
+        return Math.min(multiplePercent(price), limitAmount);
     }
 
     private Long multiplePercent(Long price) {

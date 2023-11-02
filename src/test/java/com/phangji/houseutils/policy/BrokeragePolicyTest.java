@@ -33,14 +33,14 @@ public class BrokeragePolicyTest {
     @Test
     void testRentBrokeragePolicy() {
         Assertions.assertEquals(
-                purchaseBrokeragePolicy.calculate(30_000_000L), 150_000L);
+                rentBrokeragePolicy.calculate(30_000_000L), 150_000L);
         Assertions.assertEquals(
-                purchaseBrokeragePolicy.calculate(100_000_000L), 300_000L);
+                rentBrokeragePolicy.calculate(100_000_000L), 300_000L);
         Assertions.assertEquals(
-                purchaseBrokeragePolicy.calculate(500_000_000L), 2_000_000L);
+                rentBrokeragePolicy.calculate(500_000_000L), 2_000_000L);
         Assertions.assertEquals(
-                purchaseBrokeragePolicy.calculate(800_000_000L), 6_400_000L);
+                rentBrokeragePolicy.calculate(800_000_000L), 6_400_000L);
         Assertions.assertEquals(
-                purchaseBrokeragePolicy.calculate(1_000_000_000L), 8_000_000L);
+                rentBrokeragePolicy.calculate(1_000_000_000L), 8_000_000L);
      }
 }
