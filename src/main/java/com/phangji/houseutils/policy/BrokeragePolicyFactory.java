@@ -4,7 +4,7 @@ import com.phangji.houseutils.constants.ActionType;
 import com.phangji.houseutils.exception.ErrorCode;
 import com.phangji.houseutils.exception.HouseUtilsException;
 
-public class BrokerPolicyFactory {
+public class BrokeragePolicyFactory {
     private static final RentBrokeragePolicy rentBrokeragePolicy = new RentBrokeragePolicy();
     private static final PurchaseBrokeragePolicy purchaseBrokeragePolicy = new PurchaseBrokeragePolicy();
 
